@@ -26,3 +26,7 @@ export const articleComment = (id, data) => {
     data
   })
 }
+
+export const CommentList = (id) => {
+  return axios(`/post_comment/${id}`)
+}

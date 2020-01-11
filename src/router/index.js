@@ -7,6 +7,7 @@ import Editcxt from '@/views/Editcxt.vue'
 import Index from '@/views/Index.vue'
 import Register from '@/views/Register.vue'
 import Article from '@/views/Article.vue'
+import Comment from '@/views/Comment.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,6 +40,11 @@ const routes = [
     name: 'Article',
     path: '/article/:id',
     component: Article
+  },
+  {
+    name: 'Comment',
+    path: '/comment/:id',
+    component: Comment
   }
 ]
 const router = new VueRouter({
