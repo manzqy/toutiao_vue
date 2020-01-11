@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Login from '@/views/Login.vue'
 import Person from '@/views/Person.vue'
+import Editcxt from '@/views/Editcxt.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
     name: 'Person',
     path: '/person/:id',
     component: Person
+  },
+  {
+    name: 'Editcxt',
+    path: '/editcxt/:id',
+    component: Editcxt
   }
 ]
 const router = new VueRouter({

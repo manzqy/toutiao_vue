@@ -11,3 +11,11 @@ export const userLogin = data => {
 export const userDetail = id => {
   return axios(`/user/${id}`)
 }
+
+export const userEdit = (id, data) => {
+  return axios({
+    method: 'post',
+    url: `/user_update/${id}`,
+    data
+  })
+}

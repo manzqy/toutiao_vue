@@ -1,6 +1,6 @@
 <template>
   <div class="personal">
-    <router-link to="/edit_profile">
+    <router-link :to="{path: `/editcxt/${$route.params.id}`}">
       <div class="profile">
         <!-- $axios.defaults.baseURL读取axios的服务器路径 -->
         <img :src="user.head_img" alt />
@@ -54,7 +54,6 @@ export default {
   },
   async mounted () {
     let { data: res } = await userDetail(this.$route.params.id)
-    console.log(res)
     if (res.message !== '获取成功') {
       return this.$toast.fail(this.message)
     }

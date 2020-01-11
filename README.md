@@ -53,7 +53,13 @@ npm run serve (访问前台系统)
 - 创建filters全局过滤器
 - 封装单元格组件
 - 在个人中心页面引入按钮组件、单元格组件
-
+- 创建个人编辑页面，配置路由
+- 封装Ctitle组件
+- 在编辑页面引入ctitle组件
+- 引入vant的uploader文件上传组件，在个人编辑中心引入该组件，使用position定位使其余img图片覆盖，使用FormData拿到文件内容,发送axios上传文件，同时更新本地图片
+- 引入vant的dialog提示框，昵称之间展示其内容
+- 引入vant的field组件
+- 映入vant的picker组件
 
 # 部分截图
 ...
