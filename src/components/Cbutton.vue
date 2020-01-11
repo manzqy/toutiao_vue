@@ -52,4 +52,7 @@ export default {
 .danger {
   background-color: #cc3300;
 }
+.warning {
+  background-color: #54c004;
+}
 </style>

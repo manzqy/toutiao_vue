@@ -18,18 +18,28 @@
       </cinput>
     </div>
     <div class="row">
+      <!-- 昵称 -->
+      <cinput
+        placeholder="用户名/昵称"
+        msg="昵称至少在一位"
+        :rules="/^\S{1,16}$/"
+        v-model="user.nickname"
+      >
+      </cinput>
+    </div>
+    <div class="row">
       <!-- 密码 -->
       <cinput
         placeholder="密码"
         msg="密码至少为3位"
-        :rules="/^\S{3,}$/"
+        :rules="/^\S{3,16}$/"
         v-model="user.password"
       >
       </cinput>
     </div>
-    <div class="register">还没账号？<span @click="register">去注册</span></div>
+    <div class="register"><span @click="register">去登录</span></div>
     <div class="row">
-      <cbutton @click="submit">登录</cbutton>
+      <cbutton @click="login" type="warning">注册</cbutton>
     </div>
   </div>
 </template>
@@ -37,13 +47,14 @@
 <script>
 import cbutton from '@/components/Cbutton.vue'
 import cinput from '@/components/Cinput.vue'
-import { userLogin } from '@/apis/user'
+import { userRegister } from '@/apis/user'
 export default {
   data () {
     return {
       user: {
         username: '',
-        password: ''
+        password: '',
+        nickname: ''
       }
     }
   },
@@ -52,21 +63,20 @@ export default {
     cinput
   },
   methods: {
-    async submit () {
-      if (/^\S{3,16}$/.test(this.user.username) && /^\S{3,}$/.test(this.user.password)) {
-        let { data: res } = await userLogin(this.user)
+    async login () {
+      if (/^\S{3,16}$/.test(this.user.username) && /^\S{3,16}$/.test(this.user.password) && /^\S{1,16}$/.test(this.user.nickname)) {
+        let { data: res } = await userRegister(this.user)
         this.$toast.success(res.message)
-        if (res.message === '登录成功') {
-          localStorage.setItem('toutiao_tt_token', res.data.token)
-          localStorage.setItem('toutiao__tt_user', JSON.stringify(res.data.user))
-          this.$router.push({ path: `/person/${res.data.user.id}` })
+        console.log(res)
+        if (res.message === '注册成功') {
+          this.$router.push({ name: 'Login' })
         }
       } else {
-        this.$toast.fail('用户名或者密码不正确')
+        this.$toast.fail('请输入正确的格式')
       }
     },
     register () {
-      this.$router.push({ name: 'Register' })
+      this.$router.push({ name: 'Login' })
     }
   }
 }

@@ -19,3 +19,11 @@ export const userEdit = (id, data) => {
     data
   })
 }
+
+export const userRegister = data => {
+  return axios({
+    method: 'post',
+    url: '/register',
+    data
+  })
+}

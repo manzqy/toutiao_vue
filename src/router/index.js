@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 import Login from '@/views/Login.vue'
 import Person from '@/views/Person.vue'
 import Editcxt from '@/views/Editcxt.vue'
+import Index from '@/views/Index.vue'
+import Register from '@/views/Register.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,9 +23,30 @@ const routes = [
     name: 'Editcxt',
     path: '/editcxt/:id',
     component: Editcxt
+  },
+  {
+    name: 'Index',
+    path: '/',
+    component: Index
+  },
+  {
+    name: 'Register',
+    path: '/register',
+    component: Register
   }
 ]
 const router = new VueRouter({
   routes
+})
+router.beforeEach((to, from, next) => {
+  if (to.path.indexOf('/person') !== -1) {
+    let token = localStorage.getItem('toutiao_tt_token')
+    if (token) {
+      next()
+    } else {
+      next({ name: 'Login' })
+    }
+  }
+  next()
 })
 export default router

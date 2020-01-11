@@ -29,7 +29,7 @@
       <h3 slot="left">设置</h3>
     </clist>
     <div class="btn">
-      <cbutton type="danger">退出</cbutton>
+      <cbutton type="danger" @click="exitPage">退出</cbutton>
     </div>
   </div>
 </template>
@@ -59,6 +59,11 @@ export default {
     }
     this.user = res.data
     this.user.head_img = 'http://127.0.0.1:3000' + res.data.head_img
+  },
+  methods: {
+    exitPage () {
+      this.$router.push({ name: 'Index' })
+    }
   }
 }
 </script>
