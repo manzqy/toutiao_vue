@@ -37,7 +37,7 @@
       >
       </cinput>
     </div>
-    <div class="register"><span @click="register">去登录</span></div>
+    <div class="register">已有账号？<span @click="register">去登录</span></div>
     <div class="row">
       <cbutton @click="login" type="warning">注册</cbutton>
     </div>
@@ -92,7 +92,7 @@ export default {
   color: #666;
   padding-right: 26px;
   span {
-    color: #dd001b;
+    color: #5dce05;
     cursor: pointer;
   }
 }
