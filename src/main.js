@@ -5,8 +5,12 @@ import App from './App.vue'
 import router from '@/router'
 // 引入基本样式
 import './styles/base.css'
-Vue.config.productionTip = false
 
+import { Toast, Icon } from 'vant'
+Vue.use(Toast)
+  .use(Icon)
+
+Vue.config.productionTip = false
 new Vue({
   router,
   render: h => h(App)

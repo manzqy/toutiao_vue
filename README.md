@@ -45,6 +45,8 @@ npm run serve (访问前台系统)
 # 功能列表
 学习中小体会,展示每个模块完成的流程
 - 静态文件准备，`vue create toutiao_vue` 删除多余的文件，下载`vue-router` 创建一些需要的文件夹,引入初始化样式，创建`Login.vue`,配置路由，引入到`main.js`
+- 封装 `button` 组件, `input`组件
+- 引入`vant`框架
 - [x] 登陆/注销 -- 完成
 - [x] 添加商铺 -- 完成
 - [x] 添加商品 -- 完成
