@@ -1,6 +1,6 @@
 <template>
 <!-- num 1 -->
-  <div v-if="post.type==1&&post.cover.length==1" class="content">
+  <div v-if="post.type==1&&post.cover.length==1" class="content" @click="foo">
     <div class="left">
       <h3>{{post.title}}</h3>
       <p><span>{{post.user && post.user.nickname}}</span><span>{{post.comment_length}}</span></p>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <!-- num 2 -->
-  <div v-else-if="post.type==2" class="video">
+  <div v-else-if="post.type==2" class="video" @click="foo">
     <h3>{{post.title}}</h3>
     <div class="cover">
       <van-icon name="play" />
@@ -19,7 +19,7 @@
       <p><span>{{post.user && post.user.nickname}}</span><span>{{post.comment_length}}</span></p>
   </div>
   <!-- num 3 -->
-  <div v-else class="video">
+  <div v-else class="video" @click="foo">
     <h3>{{post.title}}</h3>
     <div class="mulpic">
       <img :src="value.url" alt="" v-for="value in post.cover" :key="value.id">
@@ -30,7 +30,12 @@
 
 <script>
 export default {
-  props: ['post']
+  props: ['post'],
+  methods: {
+    foo () {
+      this.$router.push({ path: `/article/${this.post.id}` })
+    }
+  }
 }
 </script>
 

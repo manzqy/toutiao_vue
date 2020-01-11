@@ -27,3 +27,11 @@ export const userRegister = data => {
     data
   })
 }
+
+export const userFollow = (id) => {
+  return axios(`/user_follows/${id}`)
+}
+
+export const userUnfollow = (id) => {
+  return axios(`/user_unfollow/${id}`)
+}

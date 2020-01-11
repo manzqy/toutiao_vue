@@ -6,6 +6,7 @@ import Person from '@/views/Person.vue'
 import Editcxt from '@/views/Editcxt.vue'
 import Index from '@/views/Index.vue'
 import Register from '@/views/Register.vue'
+import Article from '@/views/Article.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
     name: 'Register',
     path: '/register',
     component: Register
+  },
+  {
+    name: 'Article',
+    path: '/article/:id',
+    component: Article
   }
 ]
 const router = new VueRouter({

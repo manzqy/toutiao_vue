@@ -67,6 +67,9 @@ npm run serve (访问前台系统)
 - 封装列表页，根据type值得不同使用v-if显示不同的内容
 - 引入vant的list列表组件,实现上拉刷新
 - 引入vant的PullRefresh列表组件,实现下拉刷新
+- 创建文章详情页，根据type值得不同选择不同的样式展示
+- 绑定class属性，发送axios请求，实现关注、点赞的功能
+- 封装footer组件，绑定class属性，发送axios请求，实现收藏功能
 # 部分截图
 ...
 

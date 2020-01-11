@@ -55,4 +55,9 @@ export default {
 .warning {
   background-color: #54c004;
 }
+.secondary {
+  display: inline-block;
+  border: 1px solid #666;
+  color: #666!important;
+}
 </style>

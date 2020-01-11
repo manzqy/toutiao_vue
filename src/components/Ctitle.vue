@@ -7,7 +7,9 @@
     <div class="center">
       {{title}}
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <slot name="right"></slot>
+    </div>
   </div>
 </template>
 
@@ -29,7 +31,7 @@ export default {
 <style lang="less" scoped>
 .ctitle {
   display: flex;
-  padding: 20px 15px;
+  padding: 20px 10px;
 }
 .left {
   flex: 1;
