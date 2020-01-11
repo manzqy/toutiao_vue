@@ -49,4 +49,7 @@ export default {
 .primary {
   background-color: #1989fa;
 }
+.danger {
+  background-color: #cc3300;
+}
 </style>

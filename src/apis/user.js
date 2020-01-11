@@ -7,3 +7,7 @@ export const userLogin = data => {
     data
   })
 }
+
+export const userDetail = id => {
+  return axios(`/user/${id}`)
+}
