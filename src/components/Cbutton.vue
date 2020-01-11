@@ -1,5 +1,5 @@
 <template>
-  <div class="btn" :class="[size,type]">
+  <div class="btn" :class="[size,type]" @click="foo">
     <span class="iconfont" :class="icon"></span>
     <slot></slot>
   </div>
@@ -18,6 +18,11 @@ export default {
     type: {
       type: String,
       default: 'primary'
+    }
+  },
+  methods: {
+    foo (e) {
+      this.$emit('click', e)
     }
   }
 }

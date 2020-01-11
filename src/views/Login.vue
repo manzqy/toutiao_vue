@@ -13,7 +13,7 @@
         placeholder="用户名/手机号码"
         msg="用户名或手机密码在3至16位之间"
         :rules="/^\S{3,16}$/"
-        v-model="user.usename"
+        v-model="user.username"
       >
       </cinput>
     </div>
@@ -28,7 +28,7 @@
       </cinput>
     </div>
     <div class="row">
-      <cbutton>登录</cbutton>
+      <cbutton @click="submit">登录</cbutton>
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@
 <script>
 import cbutton from '@/components/Cbutton.vue'
 import cinput from '@/components/Cinput.vue'
+import { userLogin } from '@/apis/user'
 export default {
   data () {
     return {
@@ -48,6 +49,21 @@ export default {
   components: {
     cbutton,
     cinput
+  },
+  methods: {
+    async submit () {
+      if (/^\S{3,16}$/.test(this.user.username) && /^\S{3,}$/.test(this.user.password)) {
+        let { data: res } = await userLogin(this.user)
+        this.$toast.success(res.message)
+        if (res.message === '登录成功') {
+          localStorage.setItem('toutiao_tt_token', res.data.token)
+          localStorage.getItem('toutiao__tt_user', JSON.stringify(res.data.user))
+          this.$router.push({ path: `/person/${res.data.user.id}` })
+        }
+      } else {
+        this.$toast.fail('用户名或者密码不正确')
+      }
+    }
   }
 }
 </script>
