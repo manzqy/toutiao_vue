@@ -65,6 +65,8 @@ npm run serve (访问前台系统)
 - 创建index主页面，设置路由
 - 引入vant的tab标签页组件
 - 封装列表页，根据type值得不同使用v-if显示不同的内容
+- 引入vant的list列表组件,实现上拉刷新
+- 引入vant的PullRefresh列表组件,实现下拉刷新
 # 部分截图
 ...
 
