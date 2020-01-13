@@ -4,11 +4,11 @@
       <div class="logo">
         <span class="iconfont iconnew"></span>
       </div>
-      <div class="search">
+      <div class="search" @click="$router.push({ name: 'Search' })">
         <van-icon name="search" />
         <span>搜索新闻</span>
       </div>
-      <div class="person">
+      <div class="person" @click="goPerson">
         <van-icon name="contact" />
       </div>
     </header>
@@ -55,6 +55,13 @@ export default {
     }
   },
   async mounted () {
+    let that = this
+    document.querySelector('.van-tabs').onclick = function (e) {
+      if (e.target.className.indexOf('van-tabs') !== -1) {
+        that.$router.push({ name: 'Category' })
+      }
+    }
+    // -------------
     let { data: res } = await columnList()
     console.log(res)
     this.catelist = res.data.map(v => {
@@ -96,12 +103,34 @@ export default {
       this.catelist[this.active].postlist.length = 0
       await this.init()
       this.catelist[this.active].finished = false
+    },
+    goPerson () {
+      if (this.active) {
+        let pId = JSON.parse(localStorage.getItem('toutiao__tt_user') || '{}').id
+        this.$router.push({ path: `/person/${pId}` })
+      } else {
+        this.$router.push({ name: 'Login' })
+      }
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+/deep/.van-tabs {
+  padding-right: 36px;
+  &::after {
+    content: '💕';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 36px;
+    height: 44px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 44px;
+  }
+}
 header {
   display: flex;
   justify-content: space-between;

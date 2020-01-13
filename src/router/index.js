@@ -8,6 +8,8 @@ import Index from '@/views/Index.vue'
 import Register from '@/views/Register.vue'
 import Article from '@/views/Article.vue'
 import Comment from '@/views/Comment.vue'
+import Search from '@/views/Search.vue'
+import Category from '@/views/Category.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -45,6 +47,16 @@ const routes = [
     name: 'Comment',
     path: '/comment/:id',
     component: Comment
+  },
+  {
+    name: 'Search',
+    path: '/search',
+    component: Search
+  },
+  {
+    name: 'Category',
+    path: '/category',
+    component: Category
   }
 ]
 const router = new VueRouter({

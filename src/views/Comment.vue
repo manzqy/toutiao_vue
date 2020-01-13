@@ -10,12 +10,12 @@
             <p>2小时前</p>
           </div>
         </div>
-        <span>回复</span>
+        <span @click="replyCxt(item)">回复</span>
       </div>
-      <ccomment :parent="item.parent"></ccomment>
-      <p>{{item.content}}</p>
+      <ccomment :parent="item.parent" v-if="item.parent" @banana="replyCxt"></ccomment>
+      <p class="c_comment">{{item.content}}</p>
     </div>
-    <cfooter :post="articleData"></cfooter>
+    <cfooter :post="articleData" @cg_ok="publishCxt" :obj="c_obj" :present="false"></cfooter>
   </div>
 </template>
 
@@ -28,7 +28,8 @@ export default {
   data () {
     return {
       commentData: [],
-      articleData: []
+      articleData: [],
+      c_obj: ''
     }
   },
   components: {
@@ -37,12 +38,25 @@ export default {
     ccomment
   },
   async mounted () {
-    let { data: res } = await CommentList(this.$route.params.id)
-    console.log(res)
-    this.commentData = res.data
+    this.init()
     let { data: res2 } = await articleSingle(this.$route.params.id)
     console.log(res2)
     this.articleData = res2.data
+  },
+  methods: {
+    publishCxt () {
+      this.init()
+      this.$toast.success('发表评论成功')
+      window.scrollTo(0, 0)
+    },
+    async init () {
+      let { data: res } = await CommentList(this.$route.params.id)
+      console.log(res)
+      this.commentData = res.data
+    },
+    replyCxt (data) {
+      this.c_obj = data
+    }
   }
 }
 </script>
@@ -77,5 +91,8 @@ export default {
     border-radius: 50%;
     background-color: yellow;
   }
+}
+.c_comment {
+  color: #007acc;
 }
 </style>

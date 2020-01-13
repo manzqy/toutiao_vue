@@ -1,12 +1,12 @@
 <template>
   <div class="commet_c">
-    <Ccomment v-if="parent.parent" :parent="parent.parent"></Ccomment>
+    <ccomment v-if="parent.parent" :parent="parent.parent" @banana="replyAll"></ccomment>
     <div class="row">
       <div class="author">
         <h3>{{parent.user && parent.user.nickname}}</h3>
         <p>2小时前</p>
       </div>
-      <span>回复</span>
+      <span @click="replyAll(parent)">回复</span>
     </div>
     <p class="article">{{parent.content}}</p>
   </div>
@@ -14,8 +14,13 @@
 
 <script>
 export default {
-  name: 'Ccomment',
-  props: ['parent']
+  name: 'ccomment',
+  props: ['parent'],
+  methods: {
+    replyAll (data) {
+      this.$emit('banana', data)
+    }
+  }
 }
 </script>
 

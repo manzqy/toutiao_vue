@@ -2,7 +2,7 @@
   <div class="comment">
     <div class="addcomment" v-show='!isFocus'>
       <input type="text" placeholder="写跟帖" @focus="handlerFocus" @click='isFocus = !isFocus'/>
-      <span class="comment_a" @click="$router.push({path: `/comment/${post.id}`})">
+      <span class="comment_a" @click="goComment">
         <i class="iconfont iconpinglun-"></i>
         <em>{{post.comment_length}}</em>
       </span>
@@ -22,7 +22,14 @@
 <script>
 import { articleCollect, articleComment } from '@/apis/article'
 export default {
-  props: ['post', 'obj'],
+  props: {
+    post: [Object, Array, String],
+    obj: [Object, Array, String],
+    present: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       isFocus: false
@@ -64,6 +71,13 @@ export default {
       this.isFocus = !this.isFocus
       this.$refs.commtext.value = ''
       this.$emit('o_clear')
+    },
+    goComment () {
+      if (this.present) {
+        console.log(1111111)
+        this.$router.push({ path: `/comment/${this.post.id}` })
+      }
+      this.present = true
     }
   }
 }
