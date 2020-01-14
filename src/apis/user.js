@@ -39,3 +39,7 @@ export const userUnfollow = (id) => {
 export const userFollowList = () => {
   return axios(`/user_follows`)
 }
+
+export const userStarList = () => {
+  return axios(`/user_star`)
+}

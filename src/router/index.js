@@ -11,6 +11,7 @@ import Comment from '@/views/Comment.vue'
 import Search from '@/views/Search.vue'
 import Category from '@/views/Category.vue'
 import Follow from '@/views/Follow.vue'
+import Alist from '@/views/Alist.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -63,6 +64,11 @@ const routes = [
     name: 'Follow',
     path: '/follow',
     component: Follow
+  },
+  {
+    name: 'Alist',
+    path: '/alist',
+    component: Alist
   }
 ]
 const router = new VueRouter({

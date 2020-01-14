@@ -34,7 +34,6 @@ export default {
   },
   async mounted () {
     let { data: res } = await userFollowList()
-    console.log(res)
     this.followList = res.data
   },
   methods: {

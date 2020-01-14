@@ -6,7 +6,7 @@ import router from '@/router'
 // 引入基本样式
 import './styles/base.css'
 
-import { Toast, Icon, Uploader, Dialog, Field, Picker, Tab, Tabs, List, PullRefresh, Search, Button } from 'vant'
+import { Toast, Icon, Uploader, Dialog, Field, Picker, Tab, Tabs, List, PullRefresh, Search, Button, SwipeCell } from 'vant'
 Vue.use(Toast)
   .use(Icon)
   .use(Uploader)
@@ -19,6 +19,7 @@ Vue.use(Toast)
   .use(PullRefresh)
   .use(Search)
   .use(Button)
+  .use(SwipeCell)
 
 Vue.config.productionTip = false
 new Vue({

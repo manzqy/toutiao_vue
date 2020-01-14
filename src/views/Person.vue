@@ -21,7 +21,7 @@
       <h3 slot="left">我的跟帖</h3>
       <p slot="right">跟帖/回复</p>
     </clist>
-    <clist>
+    <clist @click="$router.push({name: 'Alist'})">
       <h3 slot="left">我的收藏</h3>
       <p slot="right">文章/视频</p>
     </clist>
