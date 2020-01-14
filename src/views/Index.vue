@@ -13,7 +13,7 @@
       </div>
     </header>
     <main>
-      <van-tabs v-model="active">
+      <van-tabs v-model="active" sticky>
         <van-tab :title="item.name" v-for="item in catelist" :key="item.id*100">
           <van-pull-refresh v-model="catelist[active].isLoading" @refresh="onRefresh" success-text="刷新成功">
             <van-list
@@ -62,9 +62,20 @@ export default {
       }
     }
     // -------------
-    let { data: res } = await columnList()
-    console.log(res)
-    this.catelist = res.data.map(v => {
+    let res, result
+    if (localStorage.getItem('category_add_01') || localStorage.getItem('category_del_01')) {
+      res = await columnList()
+      result = JSON.parse(localStorage.getItem('category_add_01')) || []
+      if (this.active) {
+        res = [...res.data.data.splice(0, 2), ...result]
+      } else {
+        res = [...res.data.data.splice(0, 1), ...result]
+      }
+    } else {
+      res = await columnList()
+      res = res.data.data
+    }
+    this.catelist = res.map(v => {
       return {
         ...v,
         pageIndex: 1,
@@ -117,19 +128,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.van-tabs {
+/deep/.van-tabs__wrap {
   padding-right: 36px;
-  &::after {
-    content: '💕';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 36px;
-    height: 44px;
-    text-align: center;
-    background-color: #fff;
-    line-height: 44px;
-  }
+}
+/deep/.van-tabs__wrap::before {
+  content: '💕';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 36px;
+  text-align: center;
+  line-height: 44px;
+  background-color: #fff;
 }
 header {
   display: flex;
