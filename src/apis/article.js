@@ -30,3 +30,10 @@ export const articleComment = (id, data) => {
 export const CommentList = (id) => {
   return axios(`/post_comment/${id}`)
 }
+
+export const articleSearch = (params) => {
+  return axios({
+    url: `/post_search_recommend`,
+    params
+  })
+}

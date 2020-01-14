@@ -5,6 +5,7 @@
       <slot name="left"></slot>
     </div>
     <div class="center">
+      <slot name="center"></slot>
       {{title}}
     </div>
     <div class="right">
@@ -31,6 +32,7 @@ export default {
 <style lang="less" scoped>
 .ctitle {
   display: flex;
+  position: relative;
   padding: 20px 10px;
 }
 .left {
@@ -44,6 +46,13 @@ export default {
   flex: 3;
 }
 .right {
+  position: relative;
+  z-index: 9999;
   flex: 1;
+  margin-top: 2px;
+  text-align: center;
+  color: #007acc;
+  font-size: 15px;
+  font-weight: 700;
 }
 </style>
