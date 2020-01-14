@@ -134,6 +134,7 @@ export default {
 /deep/.van-tabs__wrap::before {
   content: '💕';
   display: block;
+  box-sizing: border-box;
   position: absolute;
   right: 0;
   top: 0;

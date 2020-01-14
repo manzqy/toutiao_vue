@@ -2,7 +2,11 @@
   <div class="comment">
     <div class="addcomment" v-show='!isFocus'>
       <input type="text" placeholder="写跟帖" @focus="handlerFocus" @click='isFocus = !isFocus'/>
-      <span class="comment_a" @click="goComment">
+      <span class="comment_a" @click="goComment" v-if="present">
+        <i class="iconfont iconpinglun-"></i>
+        <em>{{post.comment_length}}</em>
+      </span>
+      <span class="comment_a" v-if="!present">
         <i class="iconfont iconpinglun-"></i>
         <em>{{post.comment_length}}</em>
       </span>

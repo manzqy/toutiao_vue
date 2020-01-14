@@ -13,7 +13,7 @@
         <span class="iconfont iconjiantou1"></span>
       </div>
     </router-link>
-    <clist>
+    <clist @click="$router.push({name: 'Follow'})">
       <h3 slot="left">我的关注</h3>
       <p slot="right">关注的用户</p>
     </clist>

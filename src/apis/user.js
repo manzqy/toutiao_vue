@@ -35,3 +35,7 @@ export const userFollow = (id) => {
 export const userUnfollow = (id) => {
   return axios(`/user_unfollow/${id}`)
 }
+
+export const userFollowList = () => {
+  return axios(`/user_follows`)
+}

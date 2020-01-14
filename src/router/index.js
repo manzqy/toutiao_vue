@@ -10,6 +10,7 @@ import Article from '@/views/Article.vue'
 import Comment from '@/views/Comment.vue'
 import Search from '@/views/Search.vue'
 import Category from '@/views/Category.vue'
+import Follow from '@/views/Follow.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -57,6 +58,11 @@ const routes = [
     name: 'Category',
     path: '/category',
     component: Category
+  },
+  {
+    name: 'Follow',
+    path: '/follow',
+    component: Follow
   }
 ]
 const router = new VueRouter({
